@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дихальна Система | Саша Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d0d0d; --txt: #ffffff; --acc: #ff3e3e; --card: #161616;
+        }
+        .light-theme {
+            --bg: #f0f0f0; --txt: #1a1a1a; --acc: #d32f2f; --card: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: 0.3s; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--txt); line-height: 1.8; }
+        
+        nav {
+            padding: 20px; background: var(--card); position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: center; gap: 25px; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        nav a { color: var(--txt); text-decoration: none; font-weight: 900; text-transform: uppercase; cursor: pointer; }
+        .btn-circle { background: var(--acc); border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; text-align: center; }
+        h1 { font-size: 3.5rem; color: var(--acc); margin-bottom: 60px; font-weight: 900; }
+
+        /* Зиґзаґ секції */
+        .info-row { display: flex; align-items: center; gap: 50px; margin-bottom: 100px; text-align: left; }
+        .info-row.reverse { flex-direction: row-reverse; }
+        .info-text { flex: 1.2; }
+        .info-image { flex: 0.8; }
+        .info-text h2 { color: var(--acc); margin-bottom: 20px; font-size: 2.2rem; }
+        .info-image img { width: 100%; border-radius: 25px; border: 5px solid var(--acc); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        .team-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 60px; }
+        .card { background: var(--card); padding: 35px; border-radius: 30px; width: 320px; text-align: center; border-bottom: 8px solid var(--acc); }
+        .card img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 5px solid var(--acc); }
+
+        section { display: none; }
+        section.active { display: block; animation: fadeIn 0.8s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 800px) { .info-row, .info-row.reverse { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a onclick="show('home')" id="nav-h">ГОЛОВНА</a>
+        <a onclick="show('team')" id="nav-t">КОМАНДА</a>
+        <button class="btn-circle" onclick="toggleL()" id="l-b">🇭🇺</button>
+        <button class="btn-circle" onclick="toggleT()">🌓</button>
+    </nav>
+
+    <div class="container">
+        
+        <section id="home" class="active">
+            <h1 id="main-title">ДИХАЛЬНА СИСТЕМА</h1>
+
+            <div class="info-row">
+                <div class="info-text">
+                    <h2 id="r1-h">Анатомія носової порожнини</h2>
+                    <p id="r1-p1">Процес дихання — це не просто вдихання повітря. Це складна система фільтрації та підготовки. Коли кисень потрапляє в ніс, він проходить крізь мережу капілярів та слизову оболонку, яка працює як природний кондиціонер.</p>
+                    <p id="r1-p2">Тут повітря зволожується, щоб не пересушувати легені, і зігрівається до оптимальної температури. Найдрібніші частинки пилу затримуються мікроскопічними війками, забезпечуючи стерильність подальшого шляху.</p>
+                </div>
+                <div class="info-image"><img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600" alt="Lungs"></div>
+            </div>
+
+            <div class="info-row reverse">
+                <div class="info-text">
+                    <h2 id="r2-h">Бронхіальне розгалуження</h2>
+                    <p id="r2-p1">Трахея розпадається на два потужних бронхи, які стають воротами до легеневої тканини. Всередині легень вони діляться знову і знову, створюючи структуру, яку анатоми називають "бронхіальним деревом".</p>
+                    <p id="r2-p2">Це дерево налічує тисячі дрібних гілочок — бронхіол. Така будова дозволяє кисню миттєво поширюватися по всьому об’єму легень, забезпечуючи кров паливом навіть під час швидкого бігу чи занять спортом.</p>
+                </div>
+                <div class="info-image"><img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600" alt="Bio"></div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-text">
+                    <h2 id="r3-h">Таємниця альвеол</h2>
+                    <p id="r3-p1">На самих кінчиках бронхіол знаходяться альвеоли. Це маленькі пухирці, заповнені повітрям. У людини їх сотні мільйонів. Якщо їх розгорнути в одну площину, вони займуть площу великого тенісного корту.</p>
+                    <p id="r3-p2">Саме тут відбувається магія — газообмін. Кисень проникає крізь надтонку стінку альвеоли безпосередньо в кров, а вуглекислий газ повертається назад, щоб бути видаленим з організму при видиху.</p>
+                </div>
+                <div class="info-image"><img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?w=600" alt="Anatomy"></div>
+            </div>
+
+            <div class="info-row reverse">
+                <div class="info-text">
+                    <h2 id="r4-h">Клітинне дихання та енергія</h2>
+                    <p id="r4-p1">Коли кисень потрапляє в кров, серце розносить його до кожної клітини вашого тіла. Усередині клітин знаходяться мітохондрії — "енергетичні станції", які використовують кисень для спалювання глюкози.</p>
+                    <p id="r4-p2">Цей процес створює молекули АТФ — універсальне паливо для життя. Завдяки дихальному процесу ми можемо думати, рости, відновлювати тканини та відчувати світ навколо нас 24 години на добу.</p>
+                </div>
+                <div class="info-image"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600" alt="Energy"></div>
+            </div>
+
+            <div style="margin: 50px 0;">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/mOKmjYwfDGU" style="border-radius: 30px; border: 5px solid var(--acc);"></iframe>
+            </div>
+        </section>
+
+        <section id="team">
+            <h1 id="team-title">НАША КОМАНДА</h1>
+            <div class="team-grid">
+                <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Domestic_Goose.jpg/600px-Domestic_Goose.jpg" alt="Гусь">
+                    <h3 id="n-g">Гусь</h3>
+                    <p class="role" id="r-g">Розробник гри (Робив гру)</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400" alt="Суші">
+                    <h3 id="n-s">Суші</h3>
+                    <p class="role" id="r-s">Веб-розробник (Створив сайт)</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=400" alt="Дробош">
+                    <h3 id="n-d">Дробош</h3>
+                    <p class="role" id="r-d">Дослідник (Шукав інфу)</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let curL = 'ua';
+        const lang = {
+            ua: {
+                'nav-h':'ГОЛОВНА','nav-t':'КОМАНДА','main-title':'ДИХАЛЬНА СИСТЕМА','team-title':'НАША КОМАНДА',
+                'r1-h':'Анатомія носа','r2-h':'Бронхіальне дерево','r3-h':'Таємниця альвеол','r4-h':'Клітинна енергія',
+                'n-g':'Гусь','n-s':'Суші','n-d':'Дробош','r-g':'Розробник гри (Робив гру)','r-s':'Веб-розробник (Створив сайт)','r-d':'Дослідник (Шукав інфу)'
+            },
+            hu: {
+                'nav-h':'FŐOLDAL','nav-t':'CSAPAT','main-title':'LÉGZŐRENDSZER','team-title':'A CSAPATUNK',
+                'r1-h':'Az orrüreg anatómiája','r2-h':'Hörgőrendszer','r3-h':'Az alveolusok titka','r4-h':'Sejtenergia',
+                'n-g':'Lúd','n-s':'Sushi','n-d':'Drobos','r-g':'Játékfejlesztő (A játékot készítette)','r-s':'Webfejlesztő (A weboldalt készítette)','r-d':'Információkereső (Adatokat gyűjtött)'
+            }
+        };
+
+        function show(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+        function toggleT() { document.body.classList.toggle('light-theme'); }
+        function toggleL() {
+            curL = curL === 'ua' ? 'hu' : 'ua';
+            document.getElementById('l-b').innerText = curL === 'ua' ? '🇭🇺' : '🇺🇦';
+            for (let k in lang[curL]) { document.getElementById(k).innerText = lang[curL][k]; }
+        }
+    </script>
+</body>
+</html>
